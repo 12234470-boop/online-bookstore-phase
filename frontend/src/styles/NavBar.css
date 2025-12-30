@@ -1,0 +1,234 @@
+.navbar {
+  width: 100%;
+  height: 100px;
+  background-color: #0a0a0a;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #333;
+}
+
+.navbar .leftSide {
+  flex: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 150px;
+}
+
+.navbar .rightSide {
+  flex: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar a {
+  color: #e0e0e0;
+  text-decoration: none;
+  margin: 20px;
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.navbar a:hover {
+  color: #bb86fc;
+}
+
+.navbar .rightSide button {
+  background-color: transparent;
+  border: none;
+  color: #e0e0e0;
+  cursor: pointer;
+}
+
+.navbar .rightSide svg {
+  font-size: 40px;
+}
+
+.navbar #open {
+  padding-left: 0px;
+}
+.navbar #open img {
+  display: none;
+}
+
+.navbar #close img {
+  display: inherit;
+}
+
+.navbar #open .hiddenLinks {
+  display: inherit;
+  margin-left: 30px;
+}
+
+.navbar #close .hiddenLinks {
+  display: none;
+}
+
+.navbar #open a {
+  width: 70px;
+  margin: 5px;
+}
+
+/* Logo styles */
+.logo-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-text {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: cursive;
+}
+
+.logo-container:hover .logo-text {
+  color: #bb86fc;
+}
+
+/* Dashboard link */
+.dashboard-link {
+  display: flex;
+  align-items: center;
+  background: rgba(98, 0, 234, 0.1);
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(98, 0, 234, 0.3);
+}
+
+.dashboard-link:hover {
+  background: rgba(98, 0, 234, 0.2);
+  border-color: #6200ea;
+}
+
+/* User info and logout */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: 20px;
+}
+
+.username {
+  color: #bb86fc;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.logout-button {
+  background-color: #c62828;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #b71c1c;
+}
+
+.logout-link {
+  background: none;
+  border: none;
+  color: #e0e0e0;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 20px;
+  padding: 0;
+}
+
+.logout-link:hover {
+  color: #bb86fc;
+  text-decoration: underline;
+}
+
+.menu-toggle {
+  background-color: transparent;
+  border: none;
+  color: #e0e0e0;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 900px) {
+  .navbar .rightSide a {
+    width: 70px;
+  }
+  .navbar .leftSide {
+    padding-left: 50px;
+  }
+  
+  .user-info {
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 0;
+  }
+  
+  .logout-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .dashboard-link {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar .rightSide a {
+    display: none;
+  }
+
+  .navbar .rightSide {
+    justify-content: flex-end;
+    padding-right: 50px;
+  }
+
+  .navbar .rightSide button {
+    display: inherit;
+  }
+  
+  .rightSide .user-info,
+  .rightSide .logout-button,
+  .rightSide .username,
+  .rightSide .dashboard-link {
+    display: none;
+  }
+  
+  .hiddenLinks .logout-link {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #c62828;
+    border-radius: 4px;
+    color: white;
+  }
+  
+  .hiddenLinks .logout-link:hover {
+    background-color: #b71c1c;
+    color: white;
+    text-decoration: none;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .navbar .rightSide button {
+    display: none;
+  }
+
+  .hiddenLinks {
+    display: none;
+  }
+}
