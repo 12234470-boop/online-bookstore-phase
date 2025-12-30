@@ -7,7 +7,10 @@ import fs from "fs";
 import jwt from "jsonwebtoken";
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://localhost:5000'],
+  credentials: true
+}));
 app.use(express.json());
 
 app.use(express.static('public'));
@@ -25,12 +28,12 @@ const upload = multer({ storage: storage });
 
 // MySQL connection - changed database to bookstore_db
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "bookstore_db", // Changed from liu to bookstore_db
+  host: process.env.MYSQL_HOST || "localhost",
+  user: process.env.MYSQL_USER || "root",
+  password: process.env.MYSQL_PASSWORD || "",
+  database: process.env.MYSQL_DATABASE || "bookstore_db",
+  port: process.env.MYSQL_PORT || 3306
 });
-
 // JWT Secret Key
 const JWT_SECRET = 'bookstore-secret-key-change-in-production';
 

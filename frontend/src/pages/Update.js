@@ -26,7 +26,8 @@ const Update = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     
-    axios.get(`http://localhost:5000/api/books/${id}`, {
+    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+axios.get(`${API_URL}/api/books/${id}`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -90,7 +91,8 @@ const Update = () => {
     const token = localStorage.getItem('token');
 
     try {
-      await axios.put(`http://localhost:5000/api/books/${id}`, formdata, {
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+await axios.put(`${API_URL}/api/books/${id}`, formdata, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'

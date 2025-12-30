@@ -21,11 +21,12 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      fetch('http://localhost:5000/api/auth/verify', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      })
+      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+fetch(`${API_URL}/api/auth/verify`, {
+  headers: {
+    'Authorization': `Bearer ${token}`
+  }
+})
       .then(res => res.json())
       .then(data => {
         if (data.valid) {

@@ -17,15 +17,15 @@ function Menu() {
   const [showFilters, setShowFilters] = useState(false);
   const [sortBy, setSortBy] = useState("newest");
 
-  // Fetch data
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [booksRes, categoriesRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/books"),
-          axios.get("http://localhost:5000/api/books/categories")
-        ]);
-        
+ // Fetch data
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+     const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const [booksRes, categoriesRes] = await Promise.all([
+  axios.get(`${API_URL}/api/books`),
+  axios.get(`${API_URL}/api/books/categories`)
+]);
         setBooks(booksRes.data);
         setFilteredBooks(booksRes.data);
         setCategories(categoriesRes.data);

@@ -27,15 +27,15 @@ const Dashboard = () => {
   const fetchDashboardData = async () => {
     try {
       const token = localStorage.getItem('token');
-      
-      const [statsRes, booksRes] = await Promise.all([
-        axios.get("http://localhost:5000/api/dashboard/stats", {
-          headers: { 'Authorization': `Bearer ${token}` }
-        }),
-        axios.get("http://localhost:5000/api/books", {
-          headers: { 'Authorization': `Bearer ${token}` }
-        })
-      ]);
+      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const [statsRes, booksRes] = await Promise.all([
+  axios.get(`${API_URL}/api/dashboard/stats`, {
+    headers: { 'Authorization': `Bearer ${token}` }
+  }),
+  axios.get(`${API_URL}/api/books`, {
+    headers: { 'Authorization': `Bearer ${token}` }
+  })
+]);
 
       setStats(statsRes.data);
       // Get 5 most recent books

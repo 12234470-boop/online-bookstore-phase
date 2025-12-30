@@ -11,7 +11,8 @@ const Books = () => {
   useEffect(() => {
     const fetchAllBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/books");
+   const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const res = await axios.get(`${API_URL}/api/books`);
         setBooks(res.data);
       } catch (err) {
         console.log(err);
@@ -27,7 +28,8 @@ const Books = () => {
     
     const token = localStorage.getItem('token');
     try {
-      await axios.delete(`http://localhost:5000/api/books/${id}`, {
+      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+await axios.delete(`${API_URL}/api/books/${id}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

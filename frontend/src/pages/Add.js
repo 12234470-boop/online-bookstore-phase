@@ -65,7 +65,8 @@ const Add = () => {
     const token = localStorage.getItem('token');
 
     try {
-      await axios.post("http://localhost:5000/api/books", formdata, {
+     const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+await axios.post(`${API_URL}/api/books`, formdata, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'

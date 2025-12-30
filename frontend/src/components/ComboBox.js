@@ -6,11 +6,12 @@ function ComboBox({ onSelectChange, type = "category", initialValue = "" }) {
     const [error, setError] = useState(null);
     
     // Determine API endpoint based on type
-    const apiEndpoint = type === "category" 
-        ? 'http://localhost:5000/api/books/categories'
-        : type === "author"
-        ? 'http://localhost:5000/api/authors'
-        : 'http://localhost:5000/api/books/categories';
+   const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const apiEndpoint = type === "category" 
+  ? `${API_URL}/api/books/categories`
+  : type === "author"
+  ? `${API_URL}/api/authors`
+  : `${API_URL}/api/books/categories`;
 
     useEffect(() => {
         fetch(apiEndpoint) 
